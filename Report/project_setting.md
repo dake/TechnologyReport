@@ -24,3 +24,4 @@
 + Debug_CI -- jenkins变量
 + Release_CI -- jenkins变量
 
+### 3 小型项目推荐使用Vendor+submodule集成第三方源代码（project）
