@@ -1,4 +1,4 @@
-##xcode 项目配置规范
+## xcode 项目配置规范
 
 ### 1.基于TCKit基础库，Configurations的作用与配置
 #### 1.1 默认配置包含debug跟release，如果使用了jenkins，则对应添加DebugCI跟ReleaseCI
@@ -13,4 +13,4 @@
 
 #### 另外，推荐使用多个小的framework，避免导致分配大额连续内存导致内存压力
 
-### 3 小型项目推荐使用Vendor+submodule集成第三方源代（project）
+### 3 小型项目推荐使用Vendor+submodule集成第三方源代码（project）
