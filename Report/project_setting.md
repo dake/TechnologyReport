@@ -23,3 +23,5 @@
 + Release -- Dev Prodile （目的为了调试生产环境）
 + Debug_CI -- jenkins变量
 + Release_CI -- jenkins变量
+
+
