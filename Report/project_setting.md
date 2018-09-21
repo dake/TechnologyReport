@@ -15,3 +15,11 @@
 #### 另外，推荐使用多个小的 framework，避免导致分配大额连续内存导致内存压力
 
 ### 3. 小型项目推荐使用 Vendor + Submodule 集成第三方源代码（Project）
+
+### 4. Provisioning Profile 与编译环境的对应关系
+
+- Debug -- Dev Profile
++ Publish -- Dist Profile
++ Release -- Dev Prodile （目的为了调试生产环境）
++ Debug_CI -- jenkins变量
++ Release_CI -- jenkins变量
