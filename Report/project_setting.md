@@ -18,7 +18,7 @@
 
 ### 4. Provisioning Profile 与编译环境的对应关系
 
-- Debug -- Dev Profile
++ Debug -- Dev Profile
 + Publish -- Dist Profile
 + Release -- Dev Prodile （目的为了调试生产环境）
 + Debug_CI -- jenkins变量
