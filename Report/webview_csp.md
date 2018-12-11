@@ -48,7 +48,7 @@ nscurl --ats-diagnostics https://www.google.com
 | NSAllowsArbitraryLoads | YES | URLSession | iOS9/iOS10 | 彻底禁用 ATS |
 | NSAllowsArbitraryLoads | NO | Webview| iOS9/iOS10 | 未禁用 ATS |
 | NSAllowsArbitraryLoads | NO | URLSession | iOS9/iOS10 | 未禁用 ATS |
-| NSAllowsArbitraryLoads: NO & NSAllowsArbitraryLoadsInWebContent: YES | YES | Webview | iOS9/iOS10 | iOS9 彻底禁用ATS/iOS9以上只对网页内容禁用 ATS |
+| NSAllowsArbitraryLoads: NO & NSAllowsArbitraryLoadsInWebContent: YES | YES | Webview | iOS9/iOS10 | iOS9 彻底禁用ATS/iOS10只对网页内容禁用 ATS |
 | NSAllowsArbitraryLoads: NO & NSAllowsArbitraryLoadsInWebContent: YES | NO&YES | URLSession | iOS9/iOS10 | 彻底禁用ATS |
 | NSAllowsArbitraryLoads: NO & NSAllowsArbitraryLoadsInWebContent: NO | NO&NO | Webview/URLSession | iOS9/iOS10 | 彻底禁用ATS |
 | NSAllowsArbitraryLoads: YES & NSAllowsArbitraryLoadsInWebContent: NO | YES&NO | Webview | iOS9/iOS10 | iOS9彻底禁用ATS/iOS10会忽略 NSAllowsArbitraryLoads 的设置 |
@@ -146,5 +146,5 @@ W3C 的 Mixed Content 规范将资源分为了两大类:
 
 ## 参考资料--> 
 [https://www.w3.org/TR/upgrade-insecure-requests/#examples](https://www.w3.org/TR/upgrade-insecure-requests/#examples)
-[https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html)  
+[https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html)
 [ATS详解](http://ifungfay.com/uncategorized/ATS详解/)
