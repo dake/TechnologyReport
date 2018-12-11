@@ -146,6 +146,5 @@ W3C 的 Mixed Content 规范将资源分为了两大类:
 
 ## 参考资料--> 
 [https://www.w3.org/TR/upgrade-insecure-requests/#examples](https://www.w3.org/TR/upgrade-insecure-requests/#examples)
-[https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html)
-
+[https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html)  
 [ATS详解](http://ifungfay.com/uncategorized/ATS详解/)
