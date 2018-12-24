@@ -34,6 +34,8 @@ server需要提供HTTPS（TLS 1.2）的接口，可以在终端使用下面的�
 nscurl --ats-diagnostics https://www.google.com
 ```
 
++ HTTP/2 中只能使用 TLSv1.2+，还禁用了几百种 CipherSuite（[详见：TLS 1.2 Cipher Suite Black List](http://http2.github.io/http2-spec/#BadCipherSuites)）。实际上，HTTP/2 允许使用的 CipherSuite 必须采用具有前向安全性的密钥交换算法，不允许使用 RSA 密钥交换。这也是为什么 RSA Private Key 无法用于解密 HTTP/2 加密流量
+
 ### iOS9 以后 默认情况下非 HTTPS 的网络访问是被禁止的 ，考虑到兼容性 ，可以通过以下三个 KEY 来禁用 ATS 
 
 + NSAllowsArbitraryLoadsForMedia
@@ -110,7 +112,7 @@ TLS_RSA_WITH_AES_256_CBC_SHA
 TLS_RSA_WITH_AES_128_CBC_SHA256
 TLS_RSA_WITH_AES_128_CBC_SHA
 ```
-+ 用于指明所配置的域是否HTTPS的服务器。用这个配置可用访问那些没有证书、自签名证书、过期证书以及证书与域名匹配不上的服务器。默认值是NO。
++ NSExceptionAllowsInsecureHTTPLoads :用于指明所配置的域是否HTTPS的服务器。用这个配置可用访问那些没有证书、自签名证书、过期证书以及证书与域名匹配不上的服务器。默认值是NO。
 + NSIncludesSubdomains : 用于指明子域名是否使用同样的配置。默认值是NO。
 + NSThirdPartyExceptionMinimumTLSVersion : 该变量在域名为第三方域名时，且开发人员无法控制的情况下进行配置
 + NSThirdPartyExceptionRequiresForwardSecrecy : 该变量在域名为第三方域名时，且开发人员无法控制的情况下进行配置。
