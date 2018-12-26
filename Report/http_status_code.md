@@ -2,7 +2,7 @@
 
 > HTTP 状态码（HTTP Status Code）是用以表示网页服务器 HTTP 响应状态的 3 位数字代码。它由  [RFC 2616](https://tools.ietf.org/html/rfc2616) 规范定义的，并得到 [RFC 2518](https://tools.ietf.org/html/rfc2518)、[RFC 2817](https://tools.ietf.org/html/rfc2817)、[RFC 2295](https://tools.ietf.org/html/rfc2295)、[RFC 2774](https://tools.ietf.org/html/rfc2774)、[RFC 4918](https://tools.ietf.org/html/rfc4918) 等规范扩展。
 
-## 一、==消息==
+## 一、消息
 
 >这一类型的状态码，代表请求已被接受，需要继续处理。这类响应是临时响应，只包含状态行和某些可选的响应头信息，并以空行结束。由于 HTTP/1.0 协议中没有定义任何 1xx 状态码，所以除非在某些试验条件下，服务器禁止向此类客户端发送 1xx 响应。这些状态码代表的响应都是信息性的，标示客户应该采取的其他行动。
 
@@ -25,11 +25,11 @@ A WebDAV request may contain many sub-requests involving file operations, requir
 
 WebDAV 请求可能包含许多涉及文件操作的子请求，需要很长时间才能完成请求。该代码表示​​服务器已经收到并正在处理请求，但无响应可用。这样可以防止客户端超时，并假设请求丢失。
 
-### 103 Early Hints (RFC 8297 )
+### 103 Early Hints (RFC 8297 )(早期暗示)
 
-Used to return some response headers before final HTTP message.
+用于在最终 HTTP 消息之前返回一些响应头。
 
-## 二、==成功==
+## 二、成功
 
 > 这一类型的状态码，代表请求已成功被服务器接收、理解、并接受 。
 
@@ -93,7 +93,7 @@ The server has fulfilled a request for the resource, and the response is a repre
 
 服务器已经满足了对资源的请求，对实体请求的一个或多个实体操作的结果表示。
 
-## 三、==重定向==
+## 三、重定向
 
 > 这类状态码代表需要客户端采取进一步的操作才能完成请求。通常，这些状态码用来重定向，后续的请求地址（重定向目标）在本次响应的 Location 域中指明。
 > 当且仅当后续的请求所使用的方法是 GET 或者 HEAD 时，用户浏览器才可以在没有用户介入的情况下自动提交所需要的后续请求。客户端应当自动监测无限循环重定向（例如：A→B→C→……→A或A→A），因为这会导致服务器和客户端大量不必要的资源消耗。按照 HTTP/1.0 版规范的建议，浏览器不应自动访问超过 5 次的重定向。
@@ -163,7 +163,7 @@ The request and all future requests should be repeated using another URI. 307 an
 
 请求和所有将来的请求应该使用另一个 URI  重复。 307 和 308 重复 302 和 301 的行为，但不允许 HTTP 方法更改。 例如，将表单提交给永久重定向的资源可能会顺利进行。
 
-## 四、==请求错误==
+## 四、请求错误
 
 > 这类的状态码代表了客户端看起来可能发生了错误，妨碍了服务器的处理。除非响应的是一个 HEAD 请求，否则服务器就应该返回一个解释当前错误状况的实体，以及这是临时的还是永久性的状况。这些状态码适用于任何请求方法。浏览器应当向用户显示任何包含在此类错误响应中的实体内容。
 > 如果错误发生时客户端正在传送数据，那么使用 TCP 的服务器实现应当仔细确保在关闭客户端与服务器之间的连接之前，客户端已经收到了包含错误信息的数据包。如果客户端在收到错误信息后继续向服务器发送数据，服务器的 TCP 栈将向客户端发送一个重置数据包，以清除该客户端所有还未识别的输入缓冲，以免这些数据被服务器上的应用程序读取并干扰后者
@@ -290,66 +290,66 @@ This code was defined in 1998 as one of the traditional IETF April Fools' jokes 
 
 本操作码是在 1998 年作为 IETF  的传统愚人节笑话 , 在 RFC 2324 超文本咖啡壶控制协议 '中定义的，并不需要在真实的 HTTP 服务器中定义。当一个控制茶壶的 HTCPCP  收到 BREW 或 POST 指令要求其煮咖啡时应当回传此错误。这个 HTTP 状态码在某些网站（包括 Google.com ）与项目（如 Node.js  、ASP.NET  和 Go 语言 ）中用作彩蛋 。
 
-### 421 Misdirected Request (RFC 7540 )
+### 421 Misdirected Request (RFC 7540 )(错误的请求)
 
 The request was directed at a server that is not able to produce a response (for example because of connection reuse).
 
 该请求针对的是无法产生响应的服务器（例如因为连接重用）。
 
-### 422 Unprocessable Entity (WebDAV; RFC 4918 )
+### 422 Unprocessable Entity (WebDAV; RFC 4918 )(不可处理实体)
 
 The request was well-formed but was unable to be followed due to semantic errors.
 
 请求格式正确，但是由于含有语义 错误，无法响应。
 
-### 423 Locked (WebDAV; RFC 4918 )
+### 423 Locked (WebDAV; RFC 4918 )(锁定)
 
 The resource that is being accessed is locked.
 
 当前资源被锁定。
 
-### 424 Failed Dependency (WebDAV; RFC 4918 )
+### 424 Failed Dependency (WebDAV; RFC 4918 )(失败依赖项)
 
 The request failed because it depended on another request and that request failed (e.g., a PROPPATCH).
 
 由于之前的某个请求发生的错误，导致当前请求失败，例如 PROPPATCH。
 
-### 425 Unordered Collection
+### 425 Unordered Collection (无序集合)
 Defined in drafts of “WebDAV Advanced Collections Protocol”, but not present in “Web Distributed Authoring and Versioning (WebDAV) Ordered Collections Protocol”
 
 在 WebDAV Advanced Collections Protocol 中定义，但 Web Distributed Authoring and Versioning (WebDAV) Ordered Collections Protocol 中并不存在。
 
-### 426 Upgrade Required
+### 426 Upgrade Required (需要升级)
 
 The client should switch to a different protocol such as TLS/1.0 , given in the Upgrade header field.
 
 客户端应当切换到 TLS/1.0 ，并在 HTTP/1.1 Upgrade header 中给出。
 
-### 428 Precondition Required (RFC 6585 )
+### 428 Precondition Required (RFC 6585 )(需要前提条件)
 
 The origin server requires the request to be conditional. Intended to prevent the 'lost update' problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict."
 
-原服务器要求该请求满足一定条件。这是为了防止“‘未更新’问题，即客户端读取（GET）一个资源的状态，更改它，并将它写（PUT）回服务器，但这期间第三方已经在服务器上更改了该资源的状态，因此导致了冲突。”
+原服务器要求该请求满足一定条件。这是为了防止‘未更新’问题，即客户端读取（GET）一个资源的状态，更改它，并将它写（PUT）回服务器，但这期间第三方已经在服务器上更改了该资源的状态，因此导致了冲突。
 
-### 429 Too Many Requests (RFC 6585 )
+### 429 Too Many Requests (RFC 6585 )(请求太多)
 
 The user has sent too many requests in a given amount of time. Intended for use with rate-limiting schemes.
 
 用户在给定的时间内发送了太多的请求。旨在用于网络限速 。
 
-### 431 Request Header Fields Too Large (RFC 6585 )
+### 431 Request Header Fields Too Large (RFC 6585 )(请求头字段过大)
 
 The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.
 
 服务器不愿处理请求，因为一个或多个头字段过大。
 
-### 451 Unavailable For Legal Reasons (RFC 7725 )
+### 451 Unavailable For Legal Reasons (RFC 7725 )(由于法律问题被拒绝)
 
 A server operator has received a legal demand to deny access to a resource or to a set of resources that includes the requested resource. The code 451 was chosen as a reference to the novel Fahrenheit 451 (see the Acknowledgements in the RFC).
 
 该访问因法律 的要求而被拒绝，由 IETF 在 2015 核准后新增加。
 
-## 五、==服务器错误==
+## 五、服务器错误
 
 > 表示服务器无法完成明显有效的请求。这类状态码代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理。除非这是一个  HEAD 请求，否则服务器应当包含一个解释当前错误状态以及这个状况是临时的还是永久的解释信息实体。浏览器应当向用户展示任何在当前响应中被包含的实体。这些状态码适用于任何响应方法。
 
@@ -363,7 +363,7 @@ A generic error message, given when an unexpected condition was encountered and 
 
 The server either does not recognize the request method, or it lacks the ability to fulfil the request. Usually this implies future availability (e.g., a new feature of a web-service API).
 
-服务器不支持当前请求所需要的某个功能。当服务器无法识别请求的方法，并且无法支持其对任何资源的请求。（例如，网络服务 API 的新功能）
+服务器不支持当前请求所需要的某个功能。当服务器无法识别请求的方法，并且无法支持其对任何资源的请求。（例如，网络服务 API 的新功能）。
 
 ### 502 Bad Gateway (错误网关)
 
@@ -390,53 +390,62 @@ The server does not support the HTTP protocol version used in the request.
 
 服务器不支持，或者拒绝支持在请求中使用的 HTTP 版本。这暗示着服务器不能或不愿使用与客户端相同的版本。响应中应当包含一个描述了为何版本不被支持以及服务器支持哪些协议的实体。
 
-### 506 Variant Also Negotiates (RFC 2295 )
+### 506 Variant Also Negotiates (RFC 2295 )(变量协商)
 
 Transparent content negotiation for the request results in a circular reference .
 
 由《透明内容协商协议》（RFC 2295 ）扩展，代表服务器存在内部配置错误，被请求的协商变元资源被配置为在透明内容协商中使用自己，因此在一个协商处理中不是一个合适的重点。
 
-### 507 Insufficient Storage (WebDAV; RFC 4918 )
+### 507 Insufficient Storage (WebDAV; RFC 4918 )(内存不足)
 
 The server is unable to store the representation needed to complete the request.
 
 服务器无法存储完成请求所必须的内容。这个状况被认为是临时的。
 
-### 508 Loop Detected (WebDAV; RFC 5842 )
+### 508 Loop Detected (WebDAV; RFC 5842 )(死循环)
 
 The server detected an infinite loop while processing the request (sent in lieu of 208 Already Reported).
 
-服务器在处理请求时陷入死循环。 （可代替 208 状态码）
+服务器在处理请求时陷入死循环。 （可代替 208 状态码）。
 
-### 510 Not Extended (RFC 2774 )
+### 510 Not Extended (RFC 2774 )(没有扩展)
 
 Further extensions to the request are required for the server to fulfil it.
 
 获取资源所需要的策略并没有被满足。
 
-### 511 Network Authentication Required (RFC 6585 )
+### 511 Network Authentication Required (RFC 6585 )(需要身份验证)
 
 The client needs to authenticate to gain network access. Intended for use by intercepting proxies used to control access to the network (e.g., "captive portals " used to require agreement to Terms of Service before granting full Internet access via a Wi-Fi hotspot ).
 
-客户端需要进行身份验证才能获得网络访问权限，旨在限制用户群访问特定网络。（例如连接WiFi热点 时的强制网络门户 ）
+客户端需要进行身份验证才能获得网络访问权限，旨在限制用户群访问特定网络。（例如连接WiFi热点 时的强制网络门户 ）。
 
-## 六、 ==非官方状态码==
+## 六、 非官方状态码
 
-### 103 Checkpoint
+### 103 Checkpoint (检查点)
 
 Used in the resumable requests proposal to resume aborted PUT or POST requests.
+
+用于可恢复的请求建议书中，用于恢复已终止的 PUT 或 POST 请求。
 
 ### 218 This is fine (Apache Web Server )
 
 Used as a catch-all error condition for allowing response bodies to flow through Apache when ProxyErrorOverride is enabled. When ProxyErrorOverride is enabled in Apache, response bodies that contain a status code of 4xx or 5xx are automatically discarded by Apache in favor of a generic response or a custom response specified by the ErrorDocument directive.
 
-### 419 Page Expired (Laravel Framework )
+用作捕获所有错误条件，以便在启用 ProxyErrorOverride 时允许响应体通过 Apache。当 ProxyErrorOverride 在 Apache 中启用时，Apache 会自动丢弃包含状态码 4xx 或 5xx 的响应消息体，而使用 ErrorDocument 指令指定的通用响应或者自定义响应。
+
+### 419 Page Expired (Laravel Framework )(页面超时)
 
 Used by the Laravel Framework when a CSRF Token is missing or expired.
 
-### 420 Method Failure (Spring Framework )
+充当网关或者代理的服务器收到来自上游服务器的无效响应。
+
+### 420 Method Failure (Spring Framework )(请求方法失败)
 
 A deprecated response used by the Spring Framework when a method has failed.
+
+当请求方法失败时，返回一个弃用的响应。
+
 
 ### 420 Enhance Your Calm (Twitter )
 
@@ -450,117 +459,155 @@ The Microsoft extension code indicated when Windows Parental Controls are turned
 
 这是一个由 Windows 家庭控制（Microsoft）HTTP 阻止的 450 状态代码的示例，用于信息和测试。
 
-### 498 Invalid Token (Esri)
+### 498 Invalid Token (Esri)(不合法的令牌)
 
 Returned by ArcGIS for Server . Code 498 indicates an expired or otherwise invalid token.
 
-### 499 Token Required (Esri)
+ArcGis 服务器返回，代表一个超时或者不合法的令牌。
+
+### 499 Token Required (Esri)(需要令牌)
 
 Returned by ArcGIS for Server . Code 499 indicates that a token is required but was not submitted.
 
-### 509 Bandwidth Limit Exceeded (Apache Web Server /cPanel )
+ArcGis 服务器返回，代表缺少令牌信息。
+
+### 509 Bandwidth Limit Exceeded (Apache Web Server /cPanel )(超出带宽限制)
 
 The server has exceeded the bandwidth specified by the server administrator; this is often used by shared hosting providers to limit the bandwidth of customers.
 
-### 526 Invalid SSL Certificate
+服务器已经超过了服务器管理员指定的带宽；这经常被共享主机提供商用来限制客户的带宽。
+
+### 526 Invalid SSL Certificate (不合法的 SSL 证书)
 
 Used by Cloudflare and Cloud Foundry 's gorouter to indicate failure to validate the SSL/TLS certificate that the origin server presented.
 
-### 530 Site is frozen
+当前服务器的 SSL/TLS 证书验证失败。
+
+### 530 Site is frozen (网址被冻结)
 
 Used by the Pantheon web platform to indicate a site that has been frozen due to inactivity.
 
-### 598 (Informal convention) Network read timeout error
+网址被冻结，不可用。
+
+### 598 (Informal convention) Network read timeout error (网络读取超时错误)
 
 Used by some HTTP proxies to signal a network read timeout behind the proxy to a client in front of the proxy.
 
-### ==Internet Information Services==  
+某些 HTTP 代理用来向客户端发出代理网络读取超时信号。
 
-### 440 Login Time-out
+### Internet Information Services
+
+### 440 Login Time-out (登录超时)
 
 The client's session has expired and must log in again.
 
-### 449 Retry With
+登录会话过期，需要重新登录。
+
+### 449 Retry With (重试)
 
 The server cannot honour the request because the user has not provided the required information.
 
-### 451 Redirect
+服务器无法处理请求，因为没有提供足够的信息。
+
+### 451 Redirect (重定向)
 
 Used in Exchange ActiveSync when either a more efficient server is available or the server cannot access the users' mailbox. The client is expected to re-run the HTTP AutoDiscover operation to find a more appropriate server.
 
-### ==nginx==
+在 ExchangeActiveSync 中使用，当更高效的服务器可用或服务器无法访问用户邮箱时，客户端需要重新运行 HTTPAutoDiscover 操作，以找到更合适的服务器。
 
-### 444 No Response
+### nginx
+
+### 444 No Response (无响应)
 
 Used internally to instruct the server to return no information to the client and close the connection immediately.
 
 Nginx上HTTP服务器扩展。服务器不向客户端返回任何信息，并关闭连接（有助于阻止恶意软件）。
 
-### 494 Request header too large
+### 494 Request header too large (请求头太大)
 
 Client sent too large request or too long header line.
 
 在错误代码 431 提出之前 Nginx上使用的扩展 HTTP 代码。
 
-### 495 SSL Certificate Error
+### 495 SSL Certificate Error (SSL 证书错误)
 
-An expansion of the 400 Bad Request response code, used when the client has provided an invalid client certificate .
+An expansion of the 400 Bad Request response code, used when the client has provided an invalid client certificate.
 
-### 496 SSL Certificate Required
+400 错误请求响应代码的扩展，当客户端提供了无效的客户端证书时使用。
+
+### 496 SSL Certificate Required (需要 SSL 证书)
 
 An expansion of the 400 Bad Request response code, used when a client certificate is required but not provided.
 
-### 497 HTTP Request Sent to HTTPS Port
+400 错误请求响应代码的扩展，在需要但未提供客户端证书时使用。
+
+### 497 HTTP Request Sent to HTTPS Port (HTTP 请求发送至 HTTPS 端口)
 
 An expansion of the 400 Bad Request response code, used when the client has made a HTTP request to a port listening for HTTPS requests.
 
-### 499 Client Closed Request
+400 错误请求响应代码的扩展，当客户端向侦听 HTTPS 请求的端口发出 HTTP 请求时使用。
+
+### 499 Client Closed Request (客户端已关闭请求)
 
 Used when the client has closed the request before the server could send a response.
 
 这两个是以前一个叫做 ArcGIS for Server 的系统会回应的 Status Code。一般来说验证信息错误还是会回传 401 Unathorized。
 
-### ==Cloudflare==
+### Cloudflare
 
-### 520 Unknown Error
+### 520 Unknown Error (未知错误)
 
 The 520 error is used as a "catch-all response for when the origin server returns something unexpected", listing connection resets, large headers, and empty or invalid responses as common triggers.
 
 Cloudflare 会用的未知错误。
 
-### 521 Web Server Is Down
+### 521 Web Server Is Down (Web 服务器已关闭)
 
 The origin server has refused the connection from Cloudflare.
 
-指目标服务器挂了
+指目标服务器挂了。
 
-### 522 Connection Timed Out
+### 522 Connection Timed Out (连接超时)
 
 Cloudflare could not negotiate a TCP handshake with the origin server.
 
-### 523 Origin Is Unreachable
+CloudFlare 无法与源服务器进行 TCP 握手。
+
+### 523 Origin Is Unreachable (源服务器不可用)
 
 Cloudflare could not reach the origin server; for example, if the DNS records for the origin server are incorrect.
 
-### 524 A Timeout Occurred
+CloudFlare 无法连接源服务器。例如，如果源服务器的 DNS 记录不正确。
+
+### 524 A Timeout Occurred (出现超时)
 
 Cloudflare was able to complete a TCP connection to the origin server, but did not receive a timely HTTP response.
 
-### 525 SSL Handshake Failed
+CloudFlare 能够完成到源服务器的 TCP 连接，但没有收到及时的 HTTP 响应。
+
+### 525 SSL Handshake Failed (SSL 握手失败)
 
 Cloudflare could not negotiate a SSL/TLS handshake with the origin server.
 
-### 526 Invalid SSL Certificate
+CloudFlare 无法与源服务器协商 SSL/TLS 握手。
+
+### 526 Invalid SSL Certificate (SSL 证书不合法)
 
 Cloudflare could not validate the SSL certificate on the origin web server.
+
+CloudFlare 无法在源 Web 服务器上验证 SSL 证书。
 
 ### 527 Railgun Error
 
 Error 527 indicates that the request timed out or failed after the WAN connection had been established.
 
-### 530 Origin DNS Error
+错误 527 指示请求在建立 WAN 连接后超时或失败。
+
+### 530 Origin DNS Error (源 DNS 错误)
 
 Error 530 indicates that the requested host name could not be resolved on the Cloudflare network to an origin server.
+
+错误 530 表示无法在 Cloudflare 网络上将请求的主机名解析到源服务器。
 
 ## 相关链接
 1. [HTTP Status Codes](http://networksmart.wikidot.com/status-code-http)
