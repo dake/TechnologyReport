@@ -1,11 +1,11 @@
-#App 瘦身
+# App 瘦身
 ## 一、资源
-###1. 无用资源删除
+### 1. 无用资源删除
 #### 如何查找无用资源
 * 无用图片 LSUnusedResources
 * 重复文件 fdupes // 大小对比 > 部分 MD5 签名对比 > 完整 MD5 签名对比 > 逐字节对比
 
-###2. 图片
+### 2. 图片
 * 无损压缩 有损会影响设计 ImageOptim
 * xcassets 管理 App Slicing
 * 大图片可以选择 Bundle 管理
@@ -16,11 +16,11 @@
 >3. xcassets 内，可以对图片进行 Slicing，即裁剪和拉伸。Bundle 不支持。
 >4. Bundle 内支持多语言，xcassets 不支持。
 
-###3. 其它（音视频、网页）
+### 3. 其它（音视频、网页）
 * 远端下载，有离线需求可以进行缓存
 
 ## 二、二进制文件
-###1. 编译选项优化
+### 1. 编译选项优化
 * Bitcode App Slicing
 * Generate Debug Symbols // 是否生成 symbol 文件，默认开启。
 * Asset Catalog Compiler // 默认选项，不做修改。
@@ -32,7 +32,7 @@
 * Link-Time Optimization // 苹果使用了新的优化方式 Incremental，大大减少了链接的时间。建议开启。开启这个优化后，一方面减少了汇编代码的体积，一方面提高了代码的运行效率。
 * Make Strings Read-Only 
 
-###2. Linkmap
+### 2. Linkmap
 * 删除无用类
 
 > 查找无用 oc 类有两种方式，一种是类似于查找无用资源，通过搜索 "[ClassName alloc/new"、"ClassName *"、"[ClassName class]" 等关键字在代码里是否出现。另一种是通过 otool 命令逆向 __DATA.__objc_classlist 段和 __DATA.__objc_classrefs 段来获取当前所有 oc 类和被引用的 oc 类，两个集合相减就是无用 oc 类。
@@ -48,7 +48,7 @@
 > 可以利用第三方工具 simian 扫描。
 
 
-###3. 公共代码
+### 3. 公共代码
 * Frameworks 引用 代码复用 二进制复用
 
 > 文件勾选是为代码复用，多 target 勾选就会产生多份文件。要达到二进制复用，就把需要复用的文件抽到新的 Framework 中，给多 target 引用。
@@ -58,7 +58,7 @@
 > 1. 把需要的资源打包成 Bundle，供多 target 引用。
 > 2. extension 的国际化字符串复用 host app 的。// extension 中建立空白的对应语言的国际化字符串文件即可
 
-###三、其它
+### 三、其它
 * tintColor 来减少部分图片资源
 * 减少 swift、oc 混编
 * 不支持 Bitcode 的三方动态库，在打包 ipa 时，删除不需要的架构
